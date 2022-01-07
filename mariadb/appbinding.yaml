@@ -1,0 +1,25 @@
+apiVersion: appcatalog.appscode.com/v1alpha1
+kind: AppBinding
+metadata:
+  name: mariadb-fact
+  namespace: demo
+spec:
+  clientConfig:
+    service:
+      name: sample-mariadb
+      port: 3306
+      scheme: mysql
+      namespace: fact
+  parameters:
+    apiVersion: config.kubedb.com/v1alpha1
+    kind: GaleraArbitratorConfiguration
+    stash:
+      addon:
+        backupTask:
+          name: mariadb-backup-10.5.8
+        restoreTask:
+          name: mariadb-restore-10.5.8
+  secret:
+    name: fact-auth
+  type: kubedb.com/mariadb
+  version: 10.5.8

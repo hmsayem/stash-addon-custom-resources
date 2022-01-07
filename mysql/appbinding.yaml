@@ -1,0 +1,27 @@
+apiVersion: appcatalog.appscode.com/v1alpha1
+kind: AppBinding
+metadata:
+  name: sample-mysql
+  namespace: demo
+spec:
+  clientConfig:
+    service:
+      name: sample-mysql
+      namespace: fact
+      path: /
+      port: 3306
+      scheme: mysql
+    url: tcp(sample-mysql:3306)/
+  secret:
+    name: sample-mysql-auth
+  parameters:
+    apiVersion: appcatalog.appscode.com/v1alpha1
+    kind: StashAddon
+    stash:
+      addon:
+        backupTask:
+          name: mysql-backup-8.0.3
+        restoreTask:
+          name: mysql-restore-8.0.3
+  type: kubedb.com/mysql
+  version: 8.0.27

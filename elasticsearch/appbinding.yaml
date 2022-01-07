@@ -1,0 +1,25 @@
+apiVersion: appcatalog.appscode.com/v1alpha1
+kind: AppBinding
+metadata:
+  name: sample-es
+  namespace: demo
+spec:
+  clientConfig:
+    service:
+      name: sample-es
+      namespace: fact
+      port: 9200
+      scheme: http
+  parameters:
+    apiVersion: appcatalog.appscode.com/v1alpha1
+    kind: StashAddon
+    stash:
+      addon:
+        backupTask:
+          name: elasticsearch-backup-7.3.2
+        restoreTask:
+          name: elasticsearch-restore-7.3.2
+  secret:
+    name: sample-es-elastic-cred
+  type: kubedb.com/elasticsearch
+  version: 7.14.0

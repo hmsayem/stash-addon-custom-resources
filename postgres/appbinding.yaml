@@ -1,0 +1,27 @@
+apiVersion: appcatalog.appscode.com/v1alpha1
+kind: AppBinding
+metadata:
+  name: sample-postgres
+  namespace: demo
+spec:
+  clientConfig:
+    service:
+      name: sample-postgres
+      namespace: fact
+      path: /
+      port: 5432
+      query: sslmode=disable
+      scheme: postgresql
+  parameters:
+    apiVersion: appcatalog.appscode.com/v1alpha1
+    kind: StashAddon
+    stash:
+      addon:
+        backupTask:
+          name: postgres-backup-14.0
+        restoreTask:
+          name: postgres-restore-14.0
+  secret:
+    name: sample-postgres-auth
+  type: kubedb.com/postgres
+  version: "14.1"

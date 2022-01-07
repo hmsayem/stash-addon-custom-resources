@@ -1,0 +1,18 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Task
+metadata:
+  name: mariadb-backup-10.5.8
+spec:
+  steps:
+  - name: mariadb-backup-10.5.8
+    params:
+    - name: outputDir
+      value: /tmp/output
+    - name: storageSecretName
+      value: gcs-secret
+    - name: storageSecretNamespace
+      value: demo
+  - name: update-status
+    params:
+    - name: outputDir
+      value: /tmp/output

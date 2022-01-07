@@ -1,0 +1,28 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Function
+metadata:
+  name: mysql-restore-8.0.3
+spec:
+  args:
+  - restore-mysql
+  - --storage-secret-name=${storageSecretName:=}
+  - --storage-secret-namespace=${storageSecretNamespace:=}
+  - --provider=${REPOSITORY_PROVIDER:=}
+  - --bucket=${REPOSITORY_BUCKET:=}
+  - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --region=${REPOSITORY_REGION:=}
+  - --path=${REPOSITORY_PREFIX:=}
+  - --scratch-dir=/tmp
+  - --enable-cache=${ENABLE_CACHE:=true}
+  - --max-connections=${MAX_CONNECTIONS:=0}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --mysql-args=${args:=}
+  - --wait-timeout=${waitTimeout:=300}
+  - --namespace=${NAMESPACE:=default}
+  - --appbinding=${TARGET_NAME:=}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
+  - --output-dir=${outputDir:=}
+  - --license-apiservice=${LICENSE_APISERVICE:=}
+  image: hmsayem/stash-mysql:cross-namespace-support_linux_amd64
+  
