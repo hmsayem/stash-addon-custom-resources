@@ -7,7 +7,6 @@ spec:
   schedule: "*/5 * * * *"
   repository:
     name: gcs-repo
-    namespace: fact
   target:
     ref:
       apiVersion: appcatalog.appscode.com/v1alpha1

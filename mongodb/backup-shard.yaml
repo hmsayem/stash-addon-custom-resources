@@ -4,10 +4,10 @@ metadata:
   name: sample-mgo-sh
   namespace: demo
 spec:
-  version: "3.6.13-v1"
+  version: "4.4.6"
   shardTopology:
     configServer:
-      replicas: 3
+      replicas: 2
       storage:
         resources:
           requests:
@@ -16,8 +16,8 @@ spec:
     mongos:
       replicas: 2
     shard:
-      replicas: 3
-      shards: 3
+      replicas: 2
+      shards: 2
       storage:
         resources:
           requests:

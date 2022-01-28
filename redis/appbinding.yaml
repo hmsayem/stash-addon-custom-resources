@@ -7,12 +7,11 @@ spec:
   clientConfig:
     service:
       name: sample-redis-master
-      namespace: fact
       path: /
       port: 6379
       scheme: http
   secret:
-    name: restore-redis
+    name: sample-redis
   secretTransforms:
   - renameKey:
       from: redis-password

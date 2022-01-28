@@ -34,5 +34,4 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --authentication-database=${authenticationDatabase:=admin}
-  image: hmsayem/stash-mongodb:cross-namespace-support_linux_amd64
-  
+  image: stashed/stash-mongodb:4.4.6-v4

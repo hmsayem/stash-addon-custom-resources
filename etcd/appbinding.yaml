@@ -1,0 +1,13 @@
+apiVersion: appcatalog.appscode.com/v1alpha1
+kind: AppBinding
+metadata:
+  name: etcd-appbinding
+  namespace: demo
+spec:
+  clientConfig:
+    service:
+      name: etcd
+      port: 2379
+      scheme: http
+  type: etcd
+  version: 3.5.0

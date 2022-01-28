@@ -2,7 +2,7 @@ apiVersion: kubedb.com/v1alpha2
 kind: Elasticsearch
 metadata:
   name: sample-es
-  namespace: fact
+  namespace: demo
 spec:
   version: kubedb-xpack-7.14.0
   storageType: Durable
@@ -19,7 +19,7 @@ spec:
             storage: 1Gi
     data:
       suffix: data
-      replicas: 2
+      replicas: 1
       storage:
         storageClassName: "standard"
         accessModes:
@@ -29,7 +29,7 @@ spec:
             storage: 1Gi
     ingest:
       suffix: client
-      replicas: 2
+      replicas: 1
       storage:
         storageClassName: "standard"
         accessModes:

@@ -4,6 +4,8 @@ metadata:
   name: sample-mongodb-restore
   namespace: demo
 spec:
+  task:
+    name: mongodb-restore-4.4.6
   repository:
     name: gcs-repo
   target:

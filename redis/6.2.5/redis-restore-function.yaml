@@ -24,4 +24,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: hmsayem/stash-redis:cross-namespace-support_linux_amd64
+  image: stashed/stash-redis:6.2.5-v2

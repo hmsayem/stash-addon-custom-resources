@@ -12,4 +12,3 @@ spec:
     params:
     - name: outputDir
       value: /tmp/output
-      

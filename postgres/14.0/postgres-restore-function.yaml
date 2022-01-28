@@ -24,4 +24,5 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: hmsayem/stash-postgres:cross-namespace-support_linux_amd64
+  - --user=${user:=}
+  image: stashed/stash-postgres:14.0-v1

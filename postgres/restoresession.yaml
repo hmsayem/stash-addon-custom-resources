@@ -10,6 +10,6 @@ spec:
     ref:
       apiVersion: appcatalog.appscode.com/v1alpha1
       kind: AppBinding
-      name: sample-postgres
+      name: restored-postgres
   rules:
   - snapshots: [latest]

@@ -1,10 +1,11 @@
 apiVersion: kubedb.com/v1alpha2
-kind: Postgres
+kind: PerconaXtraDB
 metadata:
-  name: sample-postgres
-  namespace: fact
+  name: sample-xtradb-cluster
+  namespace: demo
 spec:
-  version: "14.1"
+  version: "5.7-cluster"
+  replicas: 3
   storageType: Durable
   storage:
     storageClassName: "standard"
@@ -13,4 +14,4 @@ spec:
     resources:
       requests:
         storage: 1Gi
-  terminationPolicy: Delete
+  terminationPolicy: WipeOut

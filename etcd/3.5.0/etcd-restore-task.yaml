@@ -1,19 +1,14 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: mysql-backup-8.0.3
+  name: etcd-restore-3.5.0
 spec:
   steps:
-  - name: mysql-backup-8.0.3
+  - name: etcd-restore-3.5.0
     params:
     - name: outputDir
       value: /tmp/output
-    - name: storageSecretName
-      value: gcs-secret
-    - name: storageSecretNamespace
-      value: fact
   - name: update-status
     params:
     - name: outputDir
       value: /tmp/output
-   

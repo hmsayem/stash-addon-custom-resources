@@ -8,10 +8,6 @@ spec:
     params:
     - name: outputDir
       value: /tmp/output
-    - name: storageSecretName
-      value: gcs-secret
-    - name: storageSecretNamespace
-      value: demo
   - name: update-status
     params:
     - name: outputDir

@@ -2,11 +2,10 @@ apiVersion: stash.appscode.com/v1beta1
 kind: RestoreSession
 metadata:
   name: sample-mysql-restore
-  namespace: fact
+  namespace: demo
 spec:
   repository:
     name: gcs-repo
-    namespace: fact
   target:
     ref:
       apiVersion: appcatalog.appscode.com/v1alpha1

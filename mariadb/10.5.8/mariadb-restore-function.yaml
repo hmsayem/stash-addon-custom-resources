@@ -10,6 +10,8 @@ spec:
   - --endpoint=${REPOSITORY_ENDPOINT:=}
   - --region=${REPOSITORY_REGION:=}
   - --path=${REPOSITORY_PREFIX:=}
+  - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
   - --scratch-dir=/tmp
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
@@ -22,6 +24,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  - --storage-secret-name=${storageSecretName:=}
-  - --storage-secret-namespace=${storageSecretNamespace:=}
-  image: hmsayem/stash-mariadb:cross-namespace-support_linux_amd64
+  image: stashed/stash-mariadb:10.5.8-v7

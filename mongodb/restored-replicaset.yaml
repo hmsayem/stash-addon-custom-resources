@@ -2,7 +2,7 @@ apiVersion: kubedb.com/v1alpha2
 kind: MongoDB
 metadata:
   name: restored-mgo-rs
-  namespace: fact
+  namespace: demo
 spec:
   version: "4.4.6"
   replicas: 3
