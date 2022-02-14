@@ -24,4 +24,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-mariadb:10.5.8-v7
+  image: hmsayem/stash-mariadb:ea3c70e_linux_amd64
