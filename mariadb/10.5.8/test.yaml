@@ -1,18 +1,18 @@
 apiVersion: kubedb.com/v1alpha2
-kind: MariaDB
+kind: MongoDB
 metadata:
-  name: sample-mariadb
+  name: sample-mongodb-rs
   namespace: demo
 spec:
-  version: "10.5.8"
-  replicas: 1
-  storageType: Durable
+  version: "5.0.3"
+  replicas: 3
+  replicaSet:
+    name: rs
   storage:
-    storageClassName: default
+    storageClassName: "default"
     accessModes:
     - ReadWriteOnce
     resources:
       requests:
         storage: 1Gi
-        cpu: 100m
   terminationPolicy: WipeOut

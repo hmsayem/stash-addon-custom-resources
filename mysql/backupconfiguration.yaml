@@ -12,6 +12,14 @@ spec:
       apiVersion: appcatalog.appscode.com/v1alpha1
       kind: AppBinding
       name: sample-mysql
+  # hooks:
+  #   preBackup:
+  #     exec:
+  #       command:
+  #         - /bin/sh
+  #         - -c
+  #         - sleep 3000
+  #     containerName: mysql # KubeDB uses "mysql" name for MySQL database container. If you haven't used KubeDB, change this according to your setup.
   retentionPolicy:
     name: keep-last-5
     keepLast: 5

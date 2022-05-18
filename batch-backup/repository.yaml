@@ -7,7 +7,7 @@ spec:
   backend:
     gcs:
       bucket: stash-testing
-      prefix: /demo/mariadb/sample-mariadb
+      prefix: /demo/batch-backup/wordpress
     storageSecretName: gcs-secret
   usagePolicy:
     allowedNamespaces:

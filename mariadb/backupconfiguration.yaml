@@ -4,9 +4,19 @@ metadata:
   name: sample-mariadb-backup
   namespace: demo
 spec:
+  runtimeSettings:
+    pod:
+      # nodeSelector:
+      #   iam.gke.io/gke-metadata-server-enabled: "true"
+      podAnnotations:
+        iam.amazonaws.com/role: oidc-bucket-accessor
+      serviceAccountAnnotations: 
+        eks.amazonaws.com/role-arn: arn:aws:iam::452618475015:role/oidc-bucket-accessor
+      #   iam.gke.io/gcp-service-account: "gsa-test@appscode-testing.iam.gserviceaccount.com"
   schedule: "*/5 * * * *"
   repository:
-    name: gcs-repo
+    name: s3-repo
+    # name: gcs-repo
   target:
     ref:
       apiVersion: appcatalog.appscode.com/v1alpha1

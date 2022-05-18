@@ -4,7 +4,7 @@ metadata:
   name: sample-mgo-sh
   namespace: demo
 spec:
-  version: "4.4.6"
+  version: "5.0.3"
   shardTopology:
     configServer:
       replicas: 2
@@ -12,7 +12,7 @@ spec:
         resources:
           requests:
             storage: 1Gi
-        storageClassName: standard
+        storageClassName: default
     mongos:
       replicas: 2
     shard:
@@ -22,5 +22,5 @@ spec:
         resources:
           requests:
             storage: 1Gi
-        storageClassName: standard
+        storageClassName: default
   terminationPolicy: WipeOut

@@ -6,6 +6,9 @@ metadata:
 spec:
   task:
     name: nats-backup-2.6.1
+    params:
+    - name: args
+      value: --check
   schedule: "*/5 * * * *"
   repository:
     name: gcs-repo
