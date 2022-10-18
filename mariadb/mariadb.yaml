@@ -8,11 +8,11 @@ spec:
   replicas: 1
   storageType: Durable
   storage:
-    storageClassName: default
+    storageClassName: "standard"
     accessModes:
     - ReadWriteOnce
     resources:
       requests:
         storage: 1Gi
-        cpu: 100m
+        cpu: 500m
   terminationPolicy: WipeOut

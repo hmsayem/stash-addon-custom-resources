@@ -1,15 +1,14 @@
 apiVersion: kubedb.com/v1alpha2
-kind: MongoDB
+kind: MariaDB
 metadata:
-  name: sample-mongodb-rs
+  name: sample-mariadb
   namespace: demo
 spec:
-  version: "5.0.3"
+  version: 10.5.8
   replicas: 3
-  replicaSet:
-    name: rs
+  storageType: Durable
   storage:
-    storageClassName: "default"
+    storageClassName: standard
     accessModes:
     - ReadWriteOnce
     resources:

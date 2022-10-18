@@ -1,0 +1,43 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Function
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"stash.appscode.com/v1beta1","kind":"Function","metadata":{"annotations":{"meta.helm.sh/release-name":"stash","meta.helm.sh/release-namespace":"stash"},"creationTimestamp":"2022-10-17T08:37:15Z","generation":1,"labels":{"app.kubernetes.io/instance":"stash","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"stash-catalog","app.kubernetes.io/version":"v2022.09.29","helm.sh/chart":"stash-catalog-v2022.09.29"},"name":"mariadb-restore-10.5.8","resourceVersion":"3068","uid":"eaeec257-f235-473f-bbe1-9d9c59bfe9fe"},"spec":{"args":["restore-mariadb","--provider=${REPOSITORY_PROVIDER:=}","--bucket=${REPOSITORY_BUCKET:=}","--endpoint=${REPOSITORY_ENDPOINT:=}","--region=${REPOSITORY_REGION:=}","--path=${REPOSITORY_PREFIX:=}","--storage-secret-name=${REPOSITORY_SECRET_NAME:=}","--storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}","--scratch-dir=/tmp","--enable-cache=${ENABLE_CACHE:=true}","--max-connections=${MAX_CONNECTIONS:=0}","--hostname=${HOSTNAME:=}","--source-hostname=${SOURCE_HOSTNAME:=}","--mariadb-args=${args:=}","--wait-timeout=${waitTimeout:=300}","--namespace=${NAMESPACE:=default}","--appbinding=${TARGET_NAME:=}","--appbinding-namespace=${TARGET_NAMESPACE:=}","--snapshot=${RESTORE_SNAPSHOTS:=}","--output-dir=${outputDir:=}","--license-apiservice=${LICENSE_APISERVICE:=}"],"image":"hmsayem/stash-mariadb:wait-md_linux_amd64"}}
+    meta.helm.sh/release-name: stash
+    meta.helm.sh/release-namespace: stash
+  creationTimestamp: "2022-10-17T08:37:15Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/instance: stash
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: stash-catalog
+    app.kubernetes.io/version: v2022.09.29
+    helm.sh/chart: stash-catalog-v2022.09.29
+  name: mariadb-restore-10.5.8
+  resourceVersion: "4862"
+  uid: eaeec257-f235-473f-bbe1-9d9c59bfe9fe
+spec:
+  args:
+  - restore-mariadb
+  - --provider=${REPOSITORY_PROVIDER:=}
+  - --bucket=${REPOSITORY_BUCKET:=}
+  - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --region=${REPOSITORY_REGION:=}
+  - --path=${REPOSITORY_PREFIX:=}
+  - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
+  - --scratch-dir=/tmp
+  - --enable-cache=${ENABLE_CACHE:=true}
+  - --max-connections=${MAX_CONNECTIONS:=0}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --mariadb-args=${args:=}
+  - --wait-timeout=${waitTimeout:=300}
+  - --namespace=${NAMESPACE:=default}
+  - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
+  - --output-dir=${outputDir:=}
+  - --license-apiservice=${LICENSE_APISERVICE:=}
+  image: hmsayem/stash-mariadb:wait-md_linux_amd64
