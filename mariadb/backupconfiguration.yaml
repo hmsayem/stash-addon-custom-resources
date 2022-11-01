@@ -4,7 +4,7 @@ metadata:
   name: sample-mariadb-backup
   namespace: demo
 spec:
-  schedule: "*/5 * * * *"
+  schedule: "*/3 * * * *"
   repository:
     name: gcs-repo
   target:
