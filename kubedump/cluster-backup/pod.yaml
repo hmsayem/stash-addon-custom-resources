@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-bash-pod
+spec:
+  containers:
+  - name: my-container
+    image: busybox  # A lightweight image with a shell
+    command: ["sleep"] # Keeps the container running 
+    args: ["3600"]  # Adjust this if you want it to run longer
+    stdin: true
+    tty: true 
+    volumeMounts:
+    - name: shared-data
+      mountPath: /data  # Where to mount the volume inside the pod
+    securityContext:
+      privileged: true
+  volumes:
+    - name: shared-data
+      hostPath:
+        path: /path/to/your/host/directory 

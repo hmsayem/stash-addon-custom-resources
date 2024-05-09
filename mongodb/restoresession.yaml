@@ -4,14 +4,26 @@ metadata:
   name: sample-mongodb-restore
   namespace: demo
 spec:
-  task:
-    name: mongodb-restore-4.4.6
   repository:
     name: gcs-repo
   target:
     ref:
       apiVersion: appcatalog.appscode.com/v1alpha1
       kind: AppBinding
-      name: sample-mgo-sh
+      name: sample-mg-restored
+      # name: sample-mg-rs-restored
+      # name: sample-mg-sh-restored
   rules:
-  - snapshots: [latest]
+  - snapshots:
+    - 0b374433
+    targetHosts:
+    - confighost
+  - snapshots:
+    - d0d61392
+    targetHosts:
+    - host-1
+  - snapshots:
+    - 4e929b18
+    targetHosts:
+    - host-0
+

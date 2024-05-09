@@ -1,20 +1,22 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: BackupConfiguration
 metadata:
-  name: sample-mariadb-backup
+  name: kube-system-backup
   namespace: demo
 spec:
-  tempDir:
-    medium: "Memory"
-    sizeLimit: "512Mi"
   schedule: "*/5 * * * *"
+  task:
+    name: kubedump-backup-0.1.0
   repository:
     name: gcs-repo
   target:
     ref:
-      apiVersion: appcatalog.appscode.com/v1alpha1
-      kind: AppBinding
-      name: sample-mariadb
+      apiVersion: v1
+      kind: Namespace
+      name: kube-system
+  runtimeSettings:
+    pod:
+      serviceAccountName: ns-resource-reader
   retentionPolicy:
     name: keep-last-5
     keepLast: 5

@@ -4,12 +4,12 @@ metadata:
   name: sample-mysql-restore
   namespace: demo
 spec:
-  repository:
+  repository: 
     name: gcs-repo
   target:
     ref:
       apiVersion: appcatalog.appscode.com/v1alpha1
       kind: AppBinding
-      name: sample-mysql
+      name: sample-mysql-restored
   rules:
     - snapshots: [latest]

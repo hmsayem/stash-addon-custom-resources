@@ -28,4 +28,4 @@ spec:
         requests:
           storage: 1Gi
   rules:
-  - snapshots: ["e0fc42b5"]
+  - snapshots: ["latest"]

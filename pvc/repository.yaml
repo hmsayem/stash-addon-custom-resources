@@ -7,7 +7,5 @@ spec:
   backend:
     gcs:
       bucket: stash-testing
-      prefix: demo/mongodb/standalone
-      # prefix: demo/mongodb/replicaset
-      # prefix: demo/mongodb/shard
+      prefix: demo/pvc
     storageSecretName: gcs-secret

@@ -4,9 +4,9 @@ metadata:
   name: sample-mariadb-backup
   namespace: demo
 spec:
-  tempDir:
-    medium: "Memory"
-    sizeLimit: "512Mi"
+  runtimeSettings:
+    pod:
+      serviceAccountName: bucket-user
   schedule: "*/5 * * * *"
   repository:
     name: gcs-repo

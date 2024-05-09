@@ -1,15 +1,17 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: RestoreSession
 metadata:
-  name: sample-postgres-restore
+  name: sample-xtradb-restore
   namespace: demo
 spec:
+  task:
+    name: perconaxtradb-restore-5.7
   repository:
     name: gcs-repo
   target:
     ref:
       apiVersion: appcatalog.appscode.com/v1alpha1
       kind: AppBinding
-      name: sample-postgres-restored
+      name: sample-xtradb-restored
   rules:
-  - snapshots: [latest]
+  - snapshots: ["latest"]

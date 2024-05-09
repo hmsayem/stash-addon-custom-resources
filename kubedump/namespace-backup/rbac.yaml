@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ns-resource-reader
+  namespace: demo
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ns-resource-reader
+  namespace: kube-system
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["get","list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ns-resource-reader
+  namespace: kube-system
+subjects:
+- kind: ServiceAccount
+  name: ns-resource-reader
+  namespace: demo
+roleRef:
+  kind: Role
+  name: ns-resource-reader
+  apiGroup: rbac.authorization.k8s.io

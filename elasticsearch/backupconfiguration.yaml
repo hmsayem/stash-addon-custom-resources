@@ -4,6 +4,10 @@ metadata:
   name: sample-es-backup
   namespace: demo
 spec:
+  runtimeSettings:
+    pod:
+      securityContext:
+        fsGroup: 65534
   schedule: "*/5 * * * *"
   repository:
     name: gcs-repo
@@ -17,10 +21,9 @@ spec:
       name: sample-es-backup-tmp-storage
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "standard"
-      resources:
-        requests:
-          storage: 1Gi
+      # resources:
+      #   requests:
+      #     storage: 50Mi
   retentionPolicy:
     name: keep-last-5
     keepLast: 5

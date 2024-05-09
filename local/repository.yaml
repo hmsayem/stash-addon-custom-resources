@@ -1,0 +1,13 @@
+apiVersion: stash.appscode.com/v1alpha1
+kind: Repository
+metadata:
+  name: nfs-repo
+  namespace: demo
+spec:
+  backend:
+    local:
+      mountPath: /safe/data
+      nfs:
+        path:  /home/nfs/share
+        server: 192.168.0.113
+    storageSecretName: local-secret

@@ -1,0 +1,24 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: BackupConfiguration
+metadata:
+  name: app-manifest-backup
+  namespace: demo
+spec:
+  schedule: "*/5 * * * *"
+  task:
+    name: kubedump-backup-0.1.0
+  repository:
+    name: gcs-repo
+  target:
+    ref:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: stash-stash-enterprise
+      namespace: stash
+  runtimeSettings:
+    pod:
+      serviceAccountName: cluster-resource-reader
+  retentionPolicy:
+    name: keep-last-5
+    keepLast: 5
+    prune: true

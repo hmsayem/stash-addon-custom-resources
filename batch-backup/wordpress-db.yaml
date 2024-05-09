@@ -83,7 +83,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 300Mi
 ---
 apiVersion: appcatalog.appscode.com/v1alpha1
 kind: AppBinding

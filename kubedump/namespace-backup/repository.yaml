@@ -7,7 +7,8 @@ spec:
   backend:
     gcs:
       bucket: stash-testing
-      prefix: demo/mongodb/standalone
-      # prefix: demo/mongodb/replicaset
-      # prefix: demo/mongodb/shard
+      prefix: /demo/manifests/namespace/kube-system
     storageSecretName: gcs-secret
+  usagePolicy:
+    allowedNamespaces:
+      from: All

@@ -1,0 +1,32 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: RestoreSession
+metadata:
+  name: sample-xtradb-restore
+  namespace: demo
+spec:
+  task:
+    name: perconaxtradb-restore-5.7
+  repository:
+    name: gcs-repo
+  target:
+    replicas: 3
+    ref:
+      apiVersion: appcatalog.appscode.com/v1alpha1
+      kind: AppBinding
+      name: sample-xtradb-restored
+    volumeMounts:
+    - name: data-sample-xtradb-cluster
+      mountPath: /var/lib/mysql
+    volumeClaimTemplates:
+    - metadata:
+        name: data-sample-xtradb-cluster-${POD_ORDINAL}
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "standard"
+        resources:
+          requests:
+            storage: 1Gi
+  rules:
+  - targetHosts: [] 
+    sourceHost: "host-0"
+    snapshots: ["latest"]

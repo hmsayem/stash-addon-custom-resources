@@ -4,7 +4,19 @@ metadata:
   name: sample-mysql-backup
   namespace: demo
 spec:
-  schedule: "*/5 * * * *"
+  # task:
+  #   name: mysql-backup-8.0.21
+  #   params:
+  #   - name: args
+  #     value: --set-gtid-purged=OFF
+
+  task:
+    name: mysql-backup-5.7.25
+    params:
+    # - name: args
+    #   value: --set-gtid-purged=OFF
+  paused: true
+  schedule: "*/3 * * * *"
   repository:
     name: gcs-repo
   target:
@@ -12,14 +24,6 @@ spec:
       apiVersion: appcatalog.appscode.com/v1alpha1
       kind: AppBinding
       name: sample-mysql
-  # hooks:
-  #   preBackup:
-  #     exec:
-  #       command:
-  #         - /bin/sh
-  #         - -c
-  #         - sleep 3000
-  #     containerName: mysql # KubeDB uses "mysql" name for MySQL database container. If you haven't used KubeDB, change this according to your setup.
   retentionPolicy:
     name: keep-last-5
     keepLast: 5

@@ -2,12 +2,10 @@ apiVersion: stash.appscode.com/v1alpha1
 kind: Repository
 metadata:
   name: gcs-repo
-  namespace: demo
+  namespace: backup
 spec:
   backend:
     gcs:
       bucket: stash-testing
-      prefix: demo/mongodb/standalone
-      # prefix: demo/mongodb/replicaset
-      # prefix: demo/mongodb/shard
+      prefix: /cross-namespace-target/data/sample-mysql
     storageSecretName: gcs-secret

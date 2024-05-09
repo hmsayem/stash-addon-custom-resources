@@ -1,7 +1,7 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: BackupConfiguration
 metadata:
-  name: deployments-volume-snapshot
+  name: sts-vs-backup
   namespace: demo
 spec:
   schedule: "*/5 * * * *"
@@ -9,9 +9,10 @@ spec:
   target:
     ref:
       apiVersion: apps/v1
-      kind: Deployment
+      kind: StatefulSet
       name: stash-demo
-    snapshotClassName: csi-gce-pd-snapshot-class
+    replicas : 3
+    snapshotClassName: csi-snapshot-class
   retentionPolicy:
     name: 'keep-last-5'
     keepLast: 5

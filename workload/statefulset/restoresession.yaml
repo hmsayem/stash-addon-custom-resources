@@ -1,0 +1,19 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: RestoreSession
+metadata:
+  name: sample-sts-restore
+  namespace: demo
+spec:
+  repository:
+    name: gcs-repo
+  target:
+    ref:
+      apiVersion: apps/v1
+      kind: StatefulSet
+      name: sample-sts-restored
+    volumeMounts:
+    - name:  source-data
+      mountPath:  /source/data
+    rules:
+    - paths:
+      - /source/data

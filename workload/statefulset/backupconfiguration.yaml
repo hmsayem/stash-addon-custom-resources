@@ -1,0 +1,30 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: BackupConfiguration
+metadata:
+  name: sample-sts-backup
+  namespace: demo
+spec:
+  paused: true
+  tempDir:
+    medium: "Memory"
+    sizeLimit: "400Mi"
+  repository:
+    name: gcs-repo
+  schedule: "*/4 * * * *"
+  target:
+    ref:
+      apiVersion: apps/v1
+      kind: StatefulSet
+      name: sample-sts
+    volumeMounts:
+    - name: source-data
+      mountPath: /source/data
+    - name: source-config
+      mountPath: /source/config
+    paths:
+    - /source/data
+    - /source/config
+  retentionPolicy:
+    name: 'keep-last-5'
+    keepLast: 5
+    prune: true

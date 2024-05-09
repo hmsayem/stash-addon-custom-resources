@@ -16,9 +16,8 @@ spec:
       name: sample-es-restore-tmp-storage
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "standard"
-      resources:
-        requests:
-          storage: 1Gi
+      # resources:
+      #   requests:
+      #     storage: 1Mi
   rules:
   - snapshots: [latest]

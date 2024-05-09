@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sample-sts-restored
+  namespace: demo
+  labels:
+    app: busybox-restored
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: busybox-restored
+  template:
+    metadata:
+      labels:
+        app: busybox-restored
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command:
+        - sleep
+        - '3600'
+        volumeMounts:
+        - name: source-data
+          mountPath: "/source/data"
+        imagePullPolicy: IfNotPresent
+  volumeClaimTemplates:
+  - metadata:
+      name: source-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "standard"
+      resources:
+        requests:
+          storage: 1Gi

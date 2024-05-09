@@ -1,0 +1,68 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: BackupBatch
+metadata:
+  name: wordpress-backup
+  namespace: demo
+spec:
+  driver: VolumeSnapshotter
+  repository:
+    name: gcs-repo
+  schedule: "*/2 * * * *"
+  executionOrder: Parallel
+  members:
+  - target:
+      alias: demo-1
+      ref:
+        apiVersion: apps/v1
+        kind: StatefulSet
+        name: stash-demo-1
+      snapshotClassName: csi-snapshot-class
+      volumeMounts:
+      - name: source-data-1
+        mountPath: /source/data
+      paths:
+      - /source/data
+    hooks:
+      postBackup:
+        exec:
+          command:
+          - /bin/sh
+          - '-c'
+          - sleep 5
+        executionPolicy: Always
+      preBackup:
+        exec:
+            command:
+            - /bin/sh
+            - '-c'
+            - sleep 5
+  - target:
+      alias: demo-2
+      ref:
+        apiVersion: apps/v1
+        kind: StatefulSet
+        name: stash-demo-2
+      snapshotClassName: csi-snapshot-class
+      volumeMounts:
+      - name: source-data-2
+        mountPath: /source/data
+      paths:
+      - /source/data
+    hooks:
+      postBackup:
+        exec:
+          command:
+          - /bin/sh
+          - '-c'
+          - sleep 5
+        executionPolicy: Always
+      preBackup:
+        exec:
+            command:
+            - /bin/sh
+            - '-c'
+            - sleep 5
+  retentionPolicy:
+    name: 'keep-last-10'
+    keepLast: 10
+    prune: true

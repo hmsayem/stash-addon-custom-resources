@@ -1,0 +1,26 @@
+apiVersion: kubedb.com/v1alpha2
+kind: MongoDB
+metadata:
+  name: sample-mg-sh-restored
+  namespace: demo
+spec:
+  version: "6.0.5"
+  shardTopology:
+    configServer:
+      replicas: 2
+      storage:
+        resources:
+          requests:
+            storage: 1Gi
+    mongos:
+      replicas: 2
+    shard:
+      replicas: 2
+      shards: 2
+      storage:
+        resources:
+          requests:
+            storage: 1Gi
+  init:
+    waitForInitialRestore: true
+  terminationPolicy: WipeOut

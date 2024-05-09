@@ -1,12 +1,9 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: BackupConfiguration
 metadata:
-  name: sample-mariadb-backup
-  namespace: demo
+  name: mongo-backup
+  namespace: backup
 spec:
-  tempDir:
-    medium: "Memory"
-    sizeLimit: "512Mi"
   schedule: "*/5 * * * *"
   repository:
     name: gcs-repo
@@ -14,7 +11,11 @@ spec:
     ref:
       apiVersion: appcatalog.appscode.com/v1alpha1
       kind: AppBinding
-      name: sample-mariadb
+      name: sample-mongodb
+      namespace: demo
+  runtimeSettings:
+    pod:
+      serviceAccountName: cross-namespace-target-reader
   retentionPolicy:
     name: keep-last-5
     keepLast: 5

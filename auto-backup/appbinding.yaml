@@ -1,0 +1,21 @@
+apiVersion: appcatalog.appscode.com/v1alpha1
+kind: AppBinding
+metadata:
+  annotations:
+    stash.appscode.com/backup-blueprint: mysql-backup-blueprint
+    stash.appscode.com/schedule: '*/5 * * * *'
+  generation: 1
+  name: sample-mysql
+  namespace: demo
+spec:
+  clientConfig:
+    service:
+      name: sample-mysql
+      path: /
+      port: 3306
+      scheme: mysql
+    url: tcp(sample-mysql.demo.svc:3306)/
+  secret:
+    name: sample-mysql-auth
+  type: mysql
+  version: 8.0.27
